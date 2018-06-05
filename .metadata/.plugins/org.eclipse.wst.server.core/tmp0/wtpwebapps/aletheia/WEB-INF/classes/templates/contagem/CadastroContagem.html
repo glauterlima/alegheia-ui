@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="'layout/LayoutPadrao'">
+
+<head></head>
+<body>
+<section layout:fragment="conteudo">
+
+	<div class="page-header">
+		<div class="container-fluid">
+				<h1>Cadastro de Contagem</h1>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+			<form method="POST" th:object="${contagem}" class="form-vertical  js-form-loading">
+				<div class="row">
+					<div class="col-sm-2 form-group">
+						<label for="nome">Nome</label> 
+						<input id="nome" type="text" class="form-control" />								
+					</div>
+
+					<div class="col-sm-2 form-group">
+						<label for="sistema">Sistema</label> 
+						<select id="sistema" class="form-control">
+							<option value="Selecione o sistema">SICAM</option>
+							<option>Folha de Pagamento</option>
+							<option>SARH</option>
+							<option>E-AVS</option>
+						</select>
+					</div>
+
+					<div class="col-sm-2 form-group">
+						<label for="lote">Lote</label> 
+						<div class="al-field-action">
+							<select id="sistema"class="form-control">
+								<option>JANEIRO2018</option>
+								<option>FEVEREIRO2018</option>
+								<option>MARCO2018</option>
+								<option>ABRIL2018</option>
+							</select>
+							
+							<div class="al-field-action__icon">
+							<a href="#" data-toggle="modal" data-target="#modalCadastroRapidoLote">
+									<i class="glyphicon glyphicon-plus-sign al-glyphicon-large"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-2 form-group">
+						<label for="plataforma">Plataforma</label> 
+						<select id="sistema" class="form-control">
+							<option>JAVA</option>
+							<option>PHP</option>
+							<option>ORACLE FORMS</option>
+							<option>VB SCRIPT</option>
+						</select>
+					</div>
+
+					<div class="col-sm-2 form-group">
+						<label for="tipo_demanda">Tipo da Demanda</label> 
+						<select id="sistema" class="form-control">
+							<option value="Selecione o lote">EVOLUTIVA</option>
+							<option>CORRETIVA</option>
+							<option>VERIFICAÇÃO DE ERRO</option>
+						</select>
+					</div>
+				</div>
+
+				
+				
+					<div class="row container-fluid">
+						<div class="col-sm-4  bg-success">
+							<h3>Contagem Fábrica de Software</h3>
+							<br />
+	
+	
+							<div class="col-lg-3 form-group">
+								<label for="cont_fsw_bruto">Total PF Bruto</label> 
+								<div class="input-group">
+									<input id="cont_fsw_bruto" type="text" class="form-control js-decimal"/>
+									<div class="input-group-addon">PF</div>
+								</div>
+							</div>
+	
+							<div class="col-sm-4 form-group">
+								<label for="cont_fsw_liq_defla">Total PF (Deflação)</label> 
+								<div class="input-group">
+									<input id="cont_fsw_liq_defla" type="text" class="form-control js-decimal" />
+									<div class="input-group-addon">PF</div>
+								</div>
+							</div>
+	
+							<div class="col-sm-5 form-group">
+								<label for="cont_fsw_liq_plat">Total PF Líquido(Plataforma)</label> 
+									<div class="input-group">
+										<input id="cont_fsw_liq_plat" type="text" class="form-control js-decimal" />
+										<div class="input-group-addon">PF</div>
+									   </div>
+							</div>
+						
+							
+							<div class="form-group  col-sm-3">
+								<label class="control-label">Status</label>
+								<div>
+								<input type="checkbox" class="js-status" data-size="small" 
+								data-off-color="danger" data-on-text="OK" data-off-text="Pendente" />						
+								</div>
+							</div>
+					
+						</div>
+	
+	
+						<div class="col-sm-4 bg-warning" >
+	
+							<h3>Contagem Fábrica de Métrica</h3>
+							<br />
+	
+	
+							<div class="col-sm-3 form-group">
+								<label for="cont_fm_bruto">Total PF Bruto</label>
+								<div class="input-group"> 
+									<input id="cont_fm_bruto" type="text" class="form-control js-decimal" />
+									<div class="input-group-addon">PF</div>
+								</div>
+							</div>
+	
+							<div class="col-sm-4 form-group">
+								<label for="cont_fm_liq_defla">Total PF (Deflação)</label> 
+								<div class="input-group"> 
+									<input id="cont_fm_liq_defla" type="text" class="form-control js-decimal" />
+									<div class="input-group-addon">PF</div>
+								</div>
+							</div>
+	
+							<div class="col-sm-5 form-group">
+								<label for="cont_fm_liq_plat">Total PF Líquido(Plataforma)</label> 
+								<div class="input-group">
+									<input id="cont_fm_liq_plat" type="text" class="form-control js-decimal" />
+									<div class="input-group-addon">PF</div>
+								</div>
+							</div>
+							
+							<div class="form-group  col-sm-3">
+								<label class="control-label">Status</label>
+								<div>
+								<input type="checkbox" class="js-status" data-size="small" 
+								data-off-color="danger" data-on-text="OK" data-off-text="Pendente" />						
+								</div>
+							</div>
+							
+						</div>
+	
+						<div class="col-sm-4  bg-info">
+	
+							<h3>Contagem TRF</h3>
+							<br />
+							<div class="col-sm-3 form-group">
+								<label for="cont_trf_bruto">Total PF Bruto</label> 
+								<div class="input-group">
+									<input id="cont_trf_bruto" type="text" class="form-control js-decimal" />
+									<div class="input-group-addon">PF</div>
+								</div>
+							</div>
+	
+							<div class="col-sm-4 form-group">
+								<label for="cont_trf_liq_defla">Total PF (Deflação)</label> 
+								<div class="input-group">
+									<input id="cont_trf_liq_defla" type="text" class="form-control js-decimal" />
+									<div class="input-group-addon">PF</div>
+								</div>
+							</div>
+	
+							<div class="col-sm-5 form-group">
+								<label for="cont_trf_liq_plat">Total PF Líquido(Plataforma)</label> 
+									<div class="input-group">
+										<input id="cont_trf_liq_plat" type="text" class="form-control js-decimal" />
+										<div class="input-group-addon">PF</div>
+									</div>
+							</div>							
+							
+							<div class="form-group  col-sm-3">
+								<label class="control-label">Status</label>
+								<div>
+								<input type="checkbox" class="js-status" data-size="small" 
+								data-off-color="danger" data-on-text="OK" data-off-text="Pendente" />						
+								</div>
+							</div>
+					
+					</div>
+				</div>		
+				<br />			
+				<div class="row">
+					<div class="col-sm-2 form-group">
+						<label for="preco_fsw">Preço Fábrica de Software</label> 
+						<div class="input-group">
+							<div class="input-group-addon">R$</div>
+							<input id="preco" type="text" class="form-control  js-decimal" />
+						</div>	
+					</div>
+						
+					<div class="col-sm-2 form-group">
+						<label for="preco_fm">Preço Fábrica de Métrica</label> 
+						<div class="input-group">
+							<div class="input-group-addon">R$</div>
+							<input id="preco" type="text" class="form-control  js-decimal" />
+						</div>	
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12">
+						<label for="observacao">Observação</label>
+						<textarea id="observacao" class="form-control"></textarea>
+					</div>
+				</div><br />
+
+	
+				<div class="form-group">
+					<button class="btn  btn-primary" type="submit">Salvar</button>
+				</div>
+
+			</form>
+		</div>
+	<div th:replace="lote/CadastroRapidoLote :: modal"></div>
+</section>
+
+<th:block layout:fragment="javascript-extra">
+	<script th:src="@{/javascripts/vendors/bootstrap-switch.min.js}"></script>
+	<script>
+		$('.js-status').bootstrapSwitch();
+	</script>
+</th:block> 
+
+</body>
+
+</html>
