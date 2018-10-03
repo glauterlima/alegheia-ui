@@ -16,3 +16,20 @@ label {
     margin: 0 auto;
   }
 }
+
+.col-nome {
+  width: 120px;
+  text-align: left;
+}
+
+.col-sistema {
+  width: 120px;
+  text-align: left;
+}
+
+.col-pf-liquido-ajustado {
+  width: 80px;
+  text-align: center;
+}
+
+
