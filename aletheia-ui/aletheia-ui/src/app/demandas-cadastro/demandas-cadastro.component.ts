@@ -7,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DemandasCadastroComponent implements OnInit {
 
+  status = [
+    { label: 'Pendente', value: 'PENDENTE' },
+    { label: 'Em análise', value: 'EMANALISE' },
+    { label: 'Finalizada', value: 'FINALIZADA' },
+  ];
+
   constructor() { }
 
   ngOnInit() {
