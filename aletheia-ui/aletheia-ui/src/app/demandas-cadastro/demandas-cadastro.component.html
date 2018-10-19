@@ -22,22 +22,23 @@
 
       <div class="ui-g-12 ui-fluid">
           <label>Responsável pela aferição</label>
-          <input pInputText type="text">
+          <p-dropdown [options]="pessoas" placeholder="Selecione" [autoWidth]="false" [filter]="true"></p-dropdown>
       </div>
 
       <div class="ui-g-4   ui-fluid">
           <label>Lote</label>
-          <input pInputText type="text">
+          <p-dropdown [options]="lotes" placeholder="Selecione" [autoWidth]="false" [filter]="true"></p-dropdown>
       </div>
 
       <div class="ui-g-4   ui-fluid">
           <label>Plataforma</label>
-          <input pInputText type="text">
+          <p-dropdown [options]="plataformas" placeholder="Selecione"
+          [autoWidth]="false"></p-dropdown>
       </div>
 
       <div class="ui-g-4   ui-fluid">
           <label>Tipo</label>
-          <input pInputText type="text">
+          <p-dropdown [options]="tipos" placeholder="Selecione" [autoWidth]="false" [filter]="true"></p-dropdown>
       </div>
       <br />
       <div class="ui-g-4   ui-fluid">
