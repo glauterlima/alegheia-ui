@@ -14,15 +14,9 @@
         <label>Nome</label>
         <input pInputText type="text" name="nome" ngModel #nome="ngModel" required minlength="5">
 
-        <div *ngIf="nome.hasError('required') && nome.dirty"
-        class="ui-message ui-messages-error">
-          Informe uma descrição
-        </div>
+      <app-message [control]="nome" error="required" text="Informe um Nome"></app-message>
 
-        <div *ngIf="nome.hasError('minlength') && nome.dirty"
-        class="ui-message ui-messages-error">
-          Mínimo de {{ nome.errors.minlength.requiredLength }} caracteres.
-        </div>
+      <app-message [control]="nome" error="minlength" text="Mínimo de {{ nome.errors?.minlength?.requiredLength }} caracteres."></app-message>
 
       </div>
 
