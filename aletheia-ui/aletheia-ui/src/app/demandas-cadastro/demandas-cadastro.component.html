@@ -1,5 +1,5 @@
 <div class="container">
-  <form>
+  <form autocomplete="off">
 
     <div class="ui-g">
       <div class="ui-g-12">
@@ -12,7 +12,18 @@
 
       <div class="ui-g-6 ui-md-3 ui-fluid">
         <label>Nome</label>
-        <input pInputText type="text">
+        <input pInputText type="text" name="nome" ngModel #nome="ngModel" required minlength="5">
+
+        <div *ngIf="nome.hasError('required') && nome.dirty"
+        class="ui-message ui-messages-error">
+          Informe uma descrição
+        </div>
+
+        <div *ngIf="nome.hasError('minlength') && nome.dirty"
+        class="ui-message ui-messages-error">
+          Mínimo de {{ nome.errors.minlength.requiredLength }} caracteres.
+        </div>
+
       </div>
 
       <div class="ui-g-6 ui-md-3 ui-fluid">
@@ -63,7 +74,8 @@
 
       <div class="ui-g-6   ui-fluid">
           <label>Valor</label>
-          <input pInputText type="text" placeholder="0,00">
+          <input pInputText type="text" placeholder="0,00" name="valor" currencyMask
+          [options]="{ prefix:'', thousands: '.', decimal:',', allowNegative: false}" ngModel>
       </div>
 
       <div class="ui-g-12   ui-fluid">
