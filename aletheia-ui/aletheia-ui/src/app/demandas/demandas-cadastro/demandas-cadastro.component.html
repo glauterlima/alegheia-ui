@@ -1,5 +1,5 @@
 <div class="container">
-  <form autocomplete="off">
+  <form #f="ngForm" autocomplete="off">
 
     <div class="ui-g">
       <div class="ui-g-12">
@@ -14,62 +14,66 @@
         <label>Nome</label>
         <input pInputText type="text" name="nome" ngModel #nome="ngModel" required minlength="5">
 
-      <app-message [control]="nome" error="required" text="Informe um Nome"></app-message>
+      <!--<app-message [control]="nome" error="required" text="Informe um Nome"></app-message>
 
       <app-message [control]="nome" error="minlength" text="Mínimo de {{ nome.errors?.minlength?.requiredLength }} caracteres."></app-message>
-
+      -->
       </div>
 
       <div class="ui-g-6 ui-md-3 ui-fluid">
           <label>Sistema</label>
-          <input pInputText type="text">
+          <p-dropdown [options]="sistemas" placeholder="Selecione"
+          [autoWidth]="false"></p-dropdown>
       </div>
 
       <div class="ui-g-12 ui-fluid">
           <label>Responsável pela aferição</label>
-          <p-dropdown [options]="pessoas" placeholder="Selecione" [autoWidth]="false" [filter]="true"></p-dropdown>
+          <p-dropdown [options]="pessoas" placeholder="Selecione" [autoWidth]="false" [filter]="true" required></p-dropdown>
       </div>
 
       <div class="ui-g-4   ui-fluid">
           <label>Lote</label>
-          <p-dropdown [options]="lotes" placeholder="Selecione" [autoWidth]="false" [filter]="true"></p-dropdown>
+          <p-dropdown [options]="lotes" placeholder="Selecione" [autoWidth]="false" [filter]="true"  required></p-dropdown>
       </div>
 
       <div class="ui-g-4   ui-fluid">
           <label>Plataforma</label>
           <p-dropdown [options]="plataformas" placeholder="Selecione"
-          [autoWidth]="false"></p-dropdown>
+          [autoWidth]="false"  required></p-dropdown>
       </div>
 
       <div class="ui-g-4   ui-fluid">
           <label>Tipo</label>
-          <p-dropdown [options]="tipos" placeholder="Selecione" [autoWidth]="false" [filter]="true"></p-dropdown>
+          <p-dropdown [options]="tipos" placeholder="Selecione" [autoWidth]="false" [filter]="true" required></p-dropdown>
       </div>
       <br />
       <div class="ui-g-4   ui-fluid">
           <label>PF Bruto</label>
-          <input pInputText type="text">
+          <input pInputText type="text" placeholder="0,00" name="valor" currencyMask
+          [options]="{ prefix:'', thousands: '.', decimal:',', allowNegative: false}" ngModel required>
       </div>
 
       <div class="ui-g-4   ui-fluid">
           <label>PF Líquido</label>
-          <input pInputText type="text">
+          <input pInputText type="text" placeholder="0,00" name="valor" currencyMask
+          [options]="{ prefix:'', thousands: '.', decimal:',', allowNegative: false}" ngModel required>
       </div>
 
       <div class="ui-g-4   ui-fluid">
           <label>PF Ajustado</label>
-          <input pInputText type="text">
+          <input pInputText type="text" placeholder="0,00" name="valor" currencyMask
+          [options]="{ prefix:'', thousands: '.', decimal:',', allowNegative: false}" ngModel required>
       </div>
 
       <div class="ui-g-6   ui-fluid">
           <label>Data</label>
-          <p-calendar dateFormat="dd/mm/yy" [readonlyInput]="true" [showIcon]="true"></p-calendar>
+          <p-calendar dateFormat="dd/mm/yy" [readonlyInput]="true" [showIcon]="true" required></p-calendar>
       </div>
 
       <div class="ui-g-6   ui-fluid">
           <label>Valor</label>
           <input pInputText type="text" placeholder="0,00" name="valor" currencyMask
-          [options]="{ prefix:'', thousands: '.', decimal:',', allowNegative: false}" ngModel>
+          [options]="{ prefix:'', thousands: '.', decimal:',', allowNegative: false}" ngModel required>
       </div>
 
       <div class="ui-g-12   ui-fluid">
@@ -78,7 +82,7 @@
       </div>
 
       <div class="ui-g-12">
-        <button pButton type="submit" label="Salvar"></button>
+        <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
         <button pButton type="button" label="Novo" class="ui-button-info"></button>
         <a href="javascript:;">Voltar para a pesquisa</a>
       </div>

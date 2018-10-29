@@ -1,7 +1,6 @@
-import { FormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { InputTextModule } from 'primeng/components/inputtext/inputtext';
 import { ButtonModule } from 'primeng/components/button/button';
@@ -11,32 +10,16 @@ import { InputTextareaModule } from 'primeng/components/inputtextarea/inputtexta
 import { CalendarModule } from 'primeng/components/calendar/calendar';
 import { SelectButtonModule } from 'primeng/components/selectbutton/selectbutton';
 import { DropdownModule } from 'primeng/components/dropdown/dropdown';
-import { InputMaskModule } from 'primeng/components/inputmask/inputmask';
-
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 
-import { AppComponent } from './app.component';
-
-import { NavbarComponent } from './navbar/navbar.component';
-
-import { MessageComponent } from './message/message.component';
-
-import { LinhaComponent } from './navegacao/linha/linha.component';
-import { DemandasModule } from './demandas/demandas.module';
+import { DemandasPesquisaComponent } from './demandas-pesquisa/demandas-pesquisa.component';
+import { DemandasCadastroComponent } from './demandas-cadastro/demandas-cadastro.component';
+import { DemandasGridComponent } from './demandas-grid/demandas-grid.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    MessageComponent,
-    LinhaComponent
-  ],
   imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
+    CommonModule,
     FormsModule,
-
-    DemandasModule,
 
     InputTextModule,
     ButtonModule,
@@ -46,12 +29,16 @@ import { DemandasModule } from './demandas/demandas.module';
     CalendarModule,
     SelectButtonModule,
     DropdownModule,
-    InputMaskModule,
-
     CurrencyMaskModule
-
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  declarations: [
+    DemandasCadastroComponent,
+    DemandasGridComponent,
+    DemandasPesquisaComponent
+  ],
+  exports: [
+    DemandasCadastroComponent,
+    DemandasPesquisaComponent
+  ]
 })
-export class AppModule { }
+export class DemandasModule { }

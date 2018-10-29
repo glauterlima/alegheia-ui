@@ -1,8 +1,9 @@
-import { FormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
+import { DemandasModule } from 'app/demandas/demandas.module';
 import { InputTextModule } from 'primeng/components/inputtext/inputtext';
 import { ButtonModule } from 'primeng/components/button/button';
 import { DataTableModule } from 'primeng/components/datatable/datatable';
@@ -13,25 +14,9 @@ import { SelectButtonModule } from 'primeng/components/selectbutton/selectbutton
 import { DropdownModule } from 'primeng/components/dropdown/dropdown';
 import { InputMaskModule } from 'primeng/components/inputmask/inputmask';
 
-import { CurrencyMaskModule } from 'ng2-currency-mask';
-
-import { AppComponent } from './app.component';
-
-import { NavbarComponent } from './navbar/navbar.component';
-
-import { MessageComponent } from './message/message.component';
-
-import { LinhaComponent } from './navegacao/linha/linha.component';
-import { DemandasModule } from './demandas/demandas.module';
-
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    MessageComponent,
-    LinhaComponent
-  ],
   imports: [
+    CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
@@ -48,10 +33,7 @@ import { DemandasModule } from './demandas/demandas.module';
     DropdownModule,
     InputMaskModule,
 
-    CurrencyMaskModule
-
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  declarations: []
 })
-export class AppModule { }
+export class PessoasModule { }

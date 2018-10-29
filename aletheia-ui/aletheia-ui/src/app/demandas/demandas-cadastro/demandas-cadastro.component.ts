@@ -48,6 +48,12 @@ export class DemandasCadastroComponent implements OnInit {
     { label: 'MARCO/2018', value: 3 },
   ];
 
+  sistemas = [
+    { label: 'SIREC', value: 'SIREC' },
+    { label: 'SARH', value: 'SARH' },
+    { label: 'E-AVS', value: 'EAVS' },
+  ];
+
   constructor() { }
 
   ngOnInit() {
