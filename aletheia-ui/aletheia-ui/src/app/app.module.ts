@@ -1,3 +1,5 @@
+import { DemandaService } from './demandas/demanda.service';
+import { Http, HttpModule } from '@angular/http';
 import { PessoasModule } from './pessoas/pessoas.module';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,12 +21,13 @@ import { CoreModule } from './core/core.module';
     BrowserModule,
     BrowserAnimationsModule,
     CoreModule,
+    HttpModule,
 
     DemandasModule,
     PessoasModule
 
   ],
-  providers: [],
+  providers: [DemandaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
