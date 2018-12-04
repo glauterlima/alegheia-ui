@@ -28,17 +28,63 @@ label {
 
 .col-nome {
   width: 120px;
-  text-align: left;
+  text-align: center;
+  font-size: 12px;
 }
 
 .col-sistema {
   width: 120px;
-  text-align: left;
+  text-align: center;
+  font-size: 12px;
+}
+
+.col-pessoa {
+  width: 120px;
+  text-align: center;
+  font-size: 12px;
+}
+
+
+.col-lote {
+  width: 120px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.col-plataforma {
+  width: 120px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.col-status {
+  width: 120px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.col-data {
+  width: 120px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.col-pf-bruto {
+  width: 80px;
+  text-align: center;
+  font-size: 12px;
 }
 
 .col-pf-liquido-ajustado {
   width: 80px;
   text-align: center;
+  font-size: 12px;
+}
+
+.col-valor {
+  width: 80px;
+  text-align: center;
+  font-size: 12px;
 }
 
 .col-acoes {

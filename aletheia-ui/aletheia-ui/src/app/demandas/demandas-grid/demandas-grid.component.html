@@ -1,14 +1,20 @@
 <p-dataTable [value]="demandas" [paginator]="true" [rows]="2" [responsive]="true">
   <p-column field="nome" header="Nome" styleClass="col-nome"></p-column>
   <p-column field="sistema" header="Sistema" styleClass="col-sistema"></p-column>
-  <p-column field="pessoa" header="Servidor (a)"></p-column>
-  <p-column field="lote" header="Lote"></p-column>
-  <p-column field="plataforma" header="Plataforma Tecnológica"></p-column>
+  <p-column field="pessoa" header="Servidor (a)" styleClass="col-pessoa"></p-column>
+  <p-column field="lote" header="Lote" styleClass="col-lote"></p-column>
+  <p-column field="plataforma" header="Plataforma Tecnológica" styleClass="col-plataforma"></p-column>
+
   <p-column header="Data" styleClass="col-data">
       <ng-template let-dema="rowData" pTemplate="body">
           <span>{{ dema.data | date:'dd/MM/yyyy' }}</span>
       </ng-template>
   </p-column>
+  <!--<p-column field="totalPfBruto" header="PF Bruto" styleClass="col-pf-bruto">
+    <ng-template let-dem="rowData" pTemplate="body">
+      <span>{{dem.totalPfBruto}}</span>
+    </ng-template>
+  </p-column>-->
   <p-column field="totalPfPlataforma" header="PF Líquido Ajustado" styleClass="col-pf-liquido-ajustado">
     <ng-template let-dem="rowData" pTemplate="body">
       <span>{{dem.totalPfPlataforma}}</span>
@@ -19,6 +25,7 @@
         <span>{{ dem.valor | number:'1.2-2' }}</span>
       </ng-template>
   </p-column>
+  <p-column field="status" header="Status" styleClass="col-status"></p-column>
   <p-column styleClass="col-acoes">
     <ng-template pTemplate="body">
         <a pButton icon="fa fa-pencil" pTooltip="Editar" tooltipPosition="top"></a>
