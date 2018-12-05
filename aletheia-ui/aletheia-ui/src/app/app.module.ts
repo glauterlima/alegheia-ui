@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { LinhaComponent } from './navegacao/linha/linha.component';
 import { DemandasModule } from './demandas/demandas.module';
 import { CoreModule } from './core/core.module';
+import { PessoaService } from './pessoas/pessoa.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,10 @@ import { CoreModule } from './core/core.module';
     PessoasModule
 
   ],
-  providers: [DemandaService],
+  providers: [
+    DemandaService,
+    PessoaService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

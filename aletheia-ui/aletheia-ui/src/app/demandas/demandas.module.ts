@@ -15,7 +15,7 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
 
 import { DemandasPesquisaComponent } from './demandas-pesquisa/demandas-pesquisa.component';
 import { DemandasCadastroComponent } from './demandas-cadastro/demandas-cadastro.component';
-import { DemandasGridComponent } from './demandas-grid/demandas-grid.component';
+
 
 @NgModule({
   imports: [
@@ -35,7 +35,6 @@ import { DemandasGridComponent } from './demandas-grid/demandas-grid.component';
   ],
   declarations: [
     DemandasCadastroComponent,
-    DemandasGridComponent,
     DemandasPesquisaComponent
   ],
   exports: [
