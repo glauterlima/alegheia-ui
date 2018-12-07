@@ -39,7 +39,12 @@ export class DemandasPesquisaComponent implements OnInit {
   excluir(demanda: any) {
     this.demandaService.excluir(demanda.codigo)
     .then(() => {
-    this.grid.first = 0;
+      if(this.grid.first === 0) {
+        this.pesquisar();
+      }else {
+       this.grid.first = 0;
+      }
+
     });
   }
 }
