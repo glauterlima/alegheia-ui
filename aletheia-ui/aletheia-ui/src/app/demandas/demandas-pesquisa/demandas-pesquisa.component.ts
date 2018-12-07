@@ -1,6 +1,11 @@
-import { DemandaService, DemandaFiltro } from './../demanda.service';
+
 import { Component, OnInit, ViewChild } from '@angular/core';
+
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
+import { ToastyService } from 'ng2-toasty';
+import { ConfirmationService } from 'primeng/components/common/api';
+
+import { DemandaService, DemandaFiltro } from './../demanda.service';
 
 @Component({
   selector: 'app-demandas-pesquisa',
@@ -15,7 +20,11 @@ export class DemandasPesquisaComponent implements OnInit {
   demandas = [];
   @ViewChild('tabela') grid;
 
-  constructor(private demandaService: DemandaService) {}
+  constructor(
+    private demandaService: DemandaService,
+    private toasty: ToastyService,
+    private confirmation: ConfirmationService
+    ) {}
 
   ngOnInit() {
 
@@ -36,14 +45,25 @@ export class DemandasPesquisaComponent implements OnInit {
     this.pesquisar(pagina);
   }
 
+  confirmarExclusao(demanda: any) {
+    this.confirmation.confirm( {
+      message: 'Tem certeza que deseja excluir?',
+      accept: () => {
+        this.excluir(demanda);
+      }
+    });
+  }
+
   excluir(demanda: any) {
     this.demandaService.excluir(demanda.codigo)
     .then(() => {
-      if(this.grid.first === 0) {
+      if (this.grid.first === 0) {
         this.pesquisar();
       }else {
        this.grid.first = 0;
       }
+
+      this.toasty.success('Demanda excluída com sucesso!')
 
     });
   }
