@@ -6,6 +6,7 @@ import { ToastyService } from 'ng2-toasty';
 import { ConfirmationService } from 'primeng/components/common/api';
 
 import { DemandaService, DemandaFiltro } from './../demanda.service';
+import { ErrorHandlerService } from 'app/core/error-handler.service';
 
 @Component({
   selector: 'app-demandas-pesquisa',
@@ -22,9 +23,10 @@ export class DemandasPesquisaComponent implements OnInit {
 
   constructor(
     private demandaService: DemandaService,
+    private errorHandler: ErrorHandlerService,
     private toasty: ToastyService,
     private confirmation: ConfirmationService
-    ) {}
+    ) { }
 
   ngOnInit() {
 
@@ -37,7 +39,8 @@ export class DemandasPesquisaComponent implements OnInit {
     .then(resultado => {
       this.totalRegistros = resultado.total;
       this.demandas = resultado.demandas;
-    });
+    })
+    .catch(erro => this.errorHandler.handle(erro));
   }
 
   aoMudarPagina(event: LazyLoadEvent) {
@@ -65,6 +68,7 @@ export class DemandasPesquisaComponent implements OnInit {
 
       this.toasty.success('Demanda excluída com sucesso!')
 
-    });
+    })
+    .catch(erro => this.errorHandler.handle(erro));
   }
 }
