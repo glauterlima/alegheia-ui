@@ -78,5 +78,4 @@ export class PessoasPesquisaComponent {
       })
       .catch(erro => this.errorHandler.handle(erro));
   }
-
 }

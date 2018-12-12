@@ -1,3 +1,4 @@
+import { LoteService } from './../lotes/lote.service';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -9,6 +10,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ErrorHandlerService } from './error-handler.service';
 import { DemandaService } from 'app/demandas/demanda.service';
 import { PessoaService } from 'app/pessoas/pessoa.service';
+import { SistemaService } from 'app/sistemas/sistema.service';
 
 
 
@@ -28,6 +30,8 @@ import { PessoaService } from 'app/pessoas/pessoa.service';
   providers: [
     DemandaService,
     PessoaService,
+    LoteService,
+    SistemaService,
     ConfirmationService,
     { provide: LOCALE_ID, useValue: 'pt-BR' },
     ErrorHandlerService

@@ -1,5 +1,5 @@
 <div class="container">
-  <form #f="ngForm" autocomplete="off">
+  <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
 
     <div class="ui-g">
       <div class="ui-g-12">
@@ -7,12 +7,12 @@
       </div>
 
       <div class="ui-g-12">
-        <p-selectButton [options]="status"></p-selectButton>
+        <p-selectButton name="status" [options]="status"></p-selectButton>
       </div>
 
       <div class="ui-g-6 ui-md-3 ui-fluid">
         <label>Nome</label>
-        <input pInputText type="text" name="nome" ngModel #nome="ngModel" required minlength="5">
+        <input pInputText type="text" name="nome" ngModel #nome="ngModel" required minlength="5" [(ngModel)]="demanda.nome" #nome="ngModel">
 
       <app-message [control]="nome" error="required" text="Informe um Nome"></app-message>
 
@@ -22,63 +22,62 @@
 
       <div class="ui-g-6 ui-md-3 ui-fluid">
           <label>Sistema</label>
-          <p-dropdown [options]="sistemas" placeholder="Selecione"
-          [autoWidth]="false"></p-dropdown>
+          <p-dropdown name="sistema" [options]="sistemas" placeholder="Selecione" [autoWidth]="false" [filter]="true" ngModel required [(ngModel)]="demanda.sistema.codigo"></p-dropdown>
       </div>
 
       <div class="ui-g-12 ui-fluid">
           <label>Responsável pela aferição</label>
-          <p-dropdown [options]="pessoas" placeholder="Selecione" [autoWidth]="false" [filter]="true" required></p-dropdown>
+          <p-dropdown name="pessoa" [options]="pessoas" placeholder="Selecione" [autoWidth]="false" [filter]="true" ngModel required [(ngModel)]="demanda.pessoa.codigo"></p-dropdown>
       </div>
 
       <div class="ui-g-4   ui-fluid">
           <label>Lote</label>
-          <p-dropdown [options]="lotes" placeholder="Selecione" [autoWidth]="false" [filter]="true"  required></p-dropdown>
+          <p-dropdown name="lote" [options]="lotes" placeholder="Selecione" [autoWidth]="false" [filter]="true" ngModel required [(ngModel)]="demanda.lote.codigo"></p-dropdown>
       </div>
 
       <div class="ui-g-4   ui-fluid">
           <label>Plataforma</label>
-          <p-dropdown [options]="plataformas" placeholder="Selecione"
-          [autoWidth]="false"  required></p-dropdown>
+          <p-dropdown name="plataforma" [options]="plataformas" placeholder="Selecione"
+          [autoWidth]="false"  required [(ngModel)]="demanda.plataforma" #plataforma></p-dropdown>
       </div>
 
       <div class="ui-g-4   ui-fluid">
           <label>Tipo</label>
-          <p-dropdown [options]="tipos" placeholder="Selecione" [autoWidth]="false" [filter]="true" required></p-dropdown>
+          <p-dropdown name="tipo" [options]="tipos" placeholder="Selecione" [autoWidth]="false" [filter]="true" required [(ngModel)]="demanda.tipo.codigo"></p-dropdown>
       </div>
       <br />
       <div class="ui-g-4   ui-fluid">
           <label>PF Bruto</label>
           <input pInputText type="text" placeholder="0,00" name="valor" currencyMask
-          [options]="{ prefix:'', thousands: '.', decimal:',', allowNegative: false}" ngModel required>
+          [options]="{ prefix:'', thousands: '.', decimal:',', allowNegative: false}" ngModel required [(ngModel)]="demanda.totalPfBruto" #totalPfBruto="ngModel">
       </div>
 
       <div class="ui-g-4   ui-fluid">
           <label>PF Líquido</label>
           <input pInputText type="text" placeholder="0,00" name="valor" currencyMask
-          [options]="{ prefix:'', thousands: '.', decimal:',', allowNegative: false}" ngModel required>
+          [options]="{ prefix:'', thousands: '.', decimal:',', allowNegative: false}" ngModel required [(ngModel)]="demanda.totalPfLiquido" #totalPfLiquido="ngModel">
       </div>
 
       <div class="ui-g-4   ui-fluid">
           <label>PF Ajustado</label>
           <input pInputText type="text" placeholder="0,00" name="valor" currencyMask
-          [options]="{ prefix:'', thousands: '.', decimal:',', allowNegative: false}" ngModel required>
+          [options]="{ prefix:'', thousands: '.', decimal:',', allowNegative: false}" ngModel required [(ngModel)]="demanda.totalPfPlataforma" #totalPfPlataforma="ngModel">
       </div>
 
       <div class="ui-g-6   ui-fluid">
           <label>Data</label>
-          <p-calendar dateFormat="dd/mm/yy" [readonlyInput]="true" [showIcon]="true" required></p-calendar>
+          <p-calendar name="data" dateFormat="dd/mm/yy" [readonlyInput]="true" [showIcon]="true" required ngModel required [(ngModel)]="demanda.data" #data="ngModel"></p-calendar>
       </div>
 
       <div class="ui-g-6   ui-fluid">
           <label>Valor</label>
           <input pInputText type="text" placeholder="0,00" name="valor" currencyMask
-          [options]="{ prefix:'', thousands: '.', decimal:',', allowNegative: false}" ngModel required>
+          [options]="{ prefix:'', thousands: '.', decimal:',', allowNegative: false}" ngModel required  [(ngModel)]="demanda.valor" #valor="ngModel">
       </div>
 
       <div class="ui-g-12   ui-fluid">
           <label>Observação</label>
-          <textarea pInputTextarea rows="3"></textarea>
+          <textarea name="observacao" pInputTextarea rows="3"  [(ngModel)]="demanda.observacao" #observacao="ngModel"></textarea>
       </div>
 
       <div class="ui-g-12">
