@@ -5,6 +5,27 @@ export class Sistema {
 
 export class Pessoa {
   codigo: number;
+  nome: string;
+  ativo: true;
+  endereco = new Endereco();
+  dadosFuncionais = new DadosFuncionais();
+}
+
+export class Endereco {
+  logradouro: string;
+  numero: string;
+  complemento: string;
+  bairro: string;
+  cep: string;
+  cidade: string;
+  estado: string;
+}
+
+export class DadosFuncionais {
+  matricula: string;
+  cargo: string;
+  email: string;
+  telefone: string;
 }
 
 export class Lote {

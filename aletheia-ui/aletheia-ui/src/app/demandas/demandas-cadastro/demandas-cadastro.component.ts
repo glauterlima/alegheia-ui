@@ -1,3 +1,4 @@
+import { DemandaService } from 'app/demandas/demanda.service';
 import { FormControl } from '@angular/forms';
 
 import { Component, OnInit } from '@angular/core';
@@ -8,6 +9,7 @@ import { Demanda } from './../../core/model';
 import { PessoaService } from './../../pessoas/pessoa.service';
 import { LoteService } from './../../lotes/lote.service';
 import { SistemaService } from './../../sistemas/sistema.service';
+import { ToastyService } from 'ng2-toasty';
 
 @Component({
   selector: 'app-demandas-cadastro',
@@ -53,7 +55,9 @@ export class DemandasCadastroComponent implements OnInit {
     private loteService: LoteService,
     private sistemaService: SistemaService,
     private pessoaService: PessoaService,
-    private errorHandler: ErrorHandlerService
+    private errorHandler: ErrorHandlerService,
+    private demandaService: DemandaService,
+    private toasty: ToastyService
   ) { }
 
   ngOnInit() {
@@ -63,7 +67,14 @@ export class DemandasCadastroComponent implements OnInit {
   }
 
   salvar(form: FormControl) {
-    console.log(this.demanda);
+    this.demandaService.adicionar(this.demanda)
+    .then(() => {
+      this.toasty.success('Demanda adicionada com sucesso!');
+
+      form.reset();
+      this.demanda = new Demanda();
+    })
+    .catch(erro => this.errorHandler.handle(erro));
   }
 
   carregarLotes() {
