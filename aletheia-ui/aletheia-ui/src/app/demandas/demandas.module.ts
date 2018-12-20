@@ -15,12 +15,14 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
 
 import { DemandasPesquisaComponent } from './demandas-pesquisa/demandas-pesquisa.component';
 import { DemandasCadastroComponent } from './demandas-cadastro/demandas-cadastro.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    RouterModule,
 
     InputTextModule,
     ButtonModule,

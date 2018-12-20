@@ -17,6 +17,7 @@ import { SelectButtonModule } from 'primeng/components/selectbutton/selectbutton
 import { DropdownModule } from 'primeng/components/dropdown/dropdown';
 import { InputMaskModule } from 'primeng/components/inputmask/inputmask';
 import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.co
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    RouterModule,
 
     DemandasModule,
 

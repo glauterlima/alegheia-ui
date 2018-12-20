@@ -11,12 +11,14 @@ import { ErrorHandlerService } from './error-handler.service';
 import { DemandaService } from 'app/demandas/demanda.service';
 import { PessoaService } from 'app/pessoas/pessoa.service';
 import { SistemaService } from 'app/sistemas/sistema.service';
+import { RouterModule } from '@angular/router';
 
 
 
 @NgModule({
   imports: [
     CommonModule,
+    RouterModule,
 
     ToastyModule.forRoot(),
     ConfirmDialogModule
