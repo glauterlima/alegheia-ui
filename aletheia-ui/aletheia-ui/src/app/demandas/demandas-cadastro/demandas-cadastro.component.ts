@@ -1,5 +1,6 @@
 import { DemandaService } from 'app/demandas/demanda.service';
 import { FormControl } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 import { Component, OnInit } from '@angular/core';
 
@@ -10,6 +11,7 @@ import { PessoaService } from './../../pessoas/pessoa.service';
 import { LoteService } from './../../lotes/lote.service';
 import { SistemaService } from './../../sistemas/sistema.service';
 import { ToastyService } from 'ng2-toasty';
+
 
 @Component({
   selector: 'app-demandas-cadastro',
@@ -57,13 +59,33 @@ export class DemandasCadastroComponent implements OnInit {
     private pessoaService: PessoaService,
     private errorHandler: ErrorHandlerService,
     private demandaService: DemandaService,
-    private toasty: ToastyService
+    private toasty: ToastyService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
+
+    const codigoDemanda = this.route.snapshot.params['codigo'];
+
+    if (codigoDemanda) {
+      this.carregarDemanda(codigoDemanda);
+    }
+
     this.carregarLotes();
     this.carregarSistemas();
     this.carregarPessoas();
+  }
+
+  get editando() {
+    return Boolean(this.demanda.codigo)
+  }
+
+  carregarDemanda(codigo: number) {
+    this.demandaService.buscarPorCodigo(codigo)
+    .then(demanda => {
+      this.demanda = demanda;
+    })
+    .catch(erro => this.errorHandler.handle(erro));
   }
 
   salvar(form: FormControl) {

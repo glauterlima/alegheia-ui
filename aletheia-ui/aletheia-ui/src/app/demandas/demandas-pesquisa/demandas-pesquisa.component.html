@@ -39,19 +39,20 @@
             </ng-template>
           </p-column>-->
           <p-column field="totalPfPlataforma" header="PF Líquido Ajustado" styleClass="col-pf-liquido-ajustado">
-            <ng-template let-dem="rowData" pTemplate="body">
-              <span>{{dem.totalPfPlataforma}}</span>
+            <ng-template let-dema="rowData" pTemplate="body">
+              <span>{{dema.totalPfPlataforma}}</span>
             </ng-template>
           </p-column>
           <p-column field="valor" header="Valor" styleClass="col-valor">
-              <ng-template let-dem="rowData" pTemplate="body">
-                <span>{{ dem.valor | number:'1.2-2' }}</span>
+              <ng-template let-dema="rowData" pTemplate="body">
+                <span>{{ dema.valor | number:'1.2-2' }}</span>
               </ng-template>
           </p-column>
           <p-column field="status" header="Status" styleClass="col-status"></p-column>
           <p-column styleClass="col-acoes">
             <ng-template let-dema="rowData" pTemplate="body">
-                <a pButton icon="fa fa-pencil" pTooltip="Editar" tooltipPosition="top"></a>
+                <a pButton icon="fa fa-pencil" pTooltip="Editar"
+                [routerLink]="['/demandas', dema.codigo]" tooltipPosition="top"></a>
                 <button pButton icon="fa fa-trash" pTooltip="Excluir"
                   tooltipPosition="top"
                   (click)="confirmarExclusao(dema)"></button>
