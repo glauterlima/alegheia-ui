@@ -38,12 +38,13 @@
       <div class="ui-g-4   ui-fluid">
           <label>Plataforma</label>
           <p-dropdown name="plataforma" [options]="plataformas" placeholder="Selecione"
-          [autoWidth]="false"  required [(ngModel)]="demanda.plataforma" #plataforma></p-dropdown>
+          [autoWidth]="false" required [(ngModel)]="demanda.plataforma" #plataforma></p-dropdown>
       </div>
 
       <div class="ui-g-4   ui-fluid">
           <label>Tipo</label>
-          <p-dropdown name="tipo" [options]="tipos" placeholder="Selecione" [autoWidth]="false" [filter]="true" required [(ngModel)]="demanda.tipo.codigo"></p-dropdown>
+          <p-dropdown name="tipo" [options]="tipos" placeholder="Selecione"
+          [autoWidth]="false" [filter]="true" required [(ngModel)]="demanda.tipo" #tipo></p-dropdown>
       </div>
       <br />
       <div class="ui-g-4   ui-fluid">
