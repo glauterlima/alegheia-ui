@@ -49,19 +49,19 @@
       <br />
       <div class="ui-g-4   ui-fluid">
           <label>PF Bruto</label>
-          <input pInputText type="text" placeholder="0,00" name="valor" currencyMask
+          <input pInputText type="text" placeholder="0,00" name="totalPfBruto" currencyMask
           [options]="{ prefix:'', thousands: '.', decimal:',', allowNegative: false}" ngModel required [(ngModel)]="demanda.totalPfBruto" #totalPfBruto="ngModel">
       </div>
 
       <div class="ui-g-4   ui-fluid">
           <label>PF Líquido</label>
-          <input pInputText type="text" placeholder="0,00" name="valor" currencyMask
+          <input pInputText type="text" placeholder="0,00" name="totalPfLiquido" currencyMask
           [options]="{ prefix:'', thousands: '.', decimal:',', allowNegative: false}" ngModel required [(ngModel)]="demanda.totalPfLiquido" #totalPfLiquido="ngModel">
       </div>
 
       <div class="ui-g-4   ui-fluid">
           <label>PF Ajustado</label>
-          <input pInputText type="text" placeholder="0,00" name="valor" currencyMask
+          <input pInputText type="text" placeholder="0,00" name="totalPfPlataforma" currencyMask
           [options]="{ prefix:'', thousands: '.', decimal:',', allowNegative: false}" ngModel required [(ngModel)]="demanda.totalPfPlataforma" #totalPfPlataforma="ngModel">
       </div>
 

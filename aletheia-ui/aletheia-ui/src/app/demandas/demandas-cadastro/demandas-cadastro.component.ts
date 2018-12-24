@@ -89,12 +89,29 @@ export class DemandasCadastroComponent implements OnInit {
   }
 
   salvar(form: FormControl) {
+    if (this.editando) {
+      this.atualizarDemanda(form);
+    } else {
+      this.adicionarDemanda(form);
+    }
+  }
+  adicionarDemanda(form: FormControl) {
     this.demandaService.adicionar(this.demanda)
     .then(() => {
       this.toasty.success('Demanda adicionada com sucesso!');
 
       form.reset();
       this.demanda = new Demanda();
+    })
+    .catch(erro => this.errorHandler.handle(erro));
+  }
+
+  atualizarDemanda(form: FormControl) {
+    this.demandaService.atualizar(this.demanda)
+    .then(demanda => {
+      this.demanda = demanda;
+
+      this.toasty.success('Demanda alterada com sucesso!');
     })
     .catch(erro => this.errorHandler.handle(erro));
   }
