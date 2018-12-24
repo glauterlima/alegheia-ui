@@ -1,6 +1,6 @@
 import { DemandaService } from 'app/demandas/demanda.service';
 import { FormControl } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Component, OnInit } from '@angular/core';
 
@@ -60,7 +60,8 @@ export class DemandasCadastroComponent implements OnInit {
     private errorHandler: ErrorHandlerService,
     private demandaService: DemandaService,
     private toasty: ToastyService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -97,11 +98,13 @@ export class DemandasCadastroComponent implements OnInit {
   }
   adicionarDemanda(form: FormControl) {
     this.demandaService.adicionar(this.demanda)
-    .then(() => {
+    .then(demandaAdicionada => {
       this.toasty.success('Demanda adicionada com sucesso!');
 
-      form.reset();
-      this.demanda = new Demanda();
+      // form.reset(); // limpa o formulário
+      // this.demanda = new Demanda();
+
+      this.router.navigate(['/demandas', demandaAdicionada.codigo]); // redireciona para o mesmo cadastro para edição
     })
     .catch(erro => this.errorHandler.handle(erro));
   }
@@ -139,5 +142,15 @@ export class DemandasCadastroComponent implements OnInit {
       this.pessoas = pessoas.map(p => ({ label: p.nome, value: p.codigo}));
     })
     .catch(erro => this.errorHandler.handle(erro));
+  }
+
+  novo(form: FormControl) {
+    form.reset();
+
+    setTimeout(function() {
+      this.demanda = new Demanda();
+    }.bind(this), 1); // gambiarra para não perder o estado da demanda
+
+    this.router.navigate(['/demandas/novo']);
   }
 }
