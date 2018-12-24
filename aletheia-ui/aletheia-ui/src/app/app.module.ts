@@ -14,6 +14,7 @@ import { PessoasPesquisaComponent } from './pessoas/pessoas-pesquisa/pessoas-pes
 import { PessoasCadastroComponent } from './pessoas/pessoas-cadastro/pessoas-cadastro.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'demandas', pathMatch: 'full' },
   { path: 'demandas', component: DemandasPesquisaComponent },
   { path: 'demandas/novo', component: DemandasCadastroComponent },
   { path: 'demandas/:codigo', component: DemandasCadastroComponent },
