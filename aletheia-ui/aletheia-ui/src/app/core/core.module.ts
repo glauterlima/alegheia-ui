@@ -12,6 +12,7 @@ import { DemandaService } from 'app/demandas/demanda.service';
 import { PessoaService } from 'app/pessoas/pessoa.service';
 import { SistemaService } from 'app/sistemas/sistema.service';
 import { RouterModule } from '@angular/router';
+import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component';
 
 
 
@@ -23,7 +24,7 @@ import { RouterModule } from '@angular/router';
     ToastyModule.forRoot(),
     ConfirmDialogModule
   ],
-  declarations: [NavbarComponent],
+  declarations: [NavbarComponent, PaginaNaoEncontradaComponent],
   exports: [
     NavbarComponent,
     ToastyModule,

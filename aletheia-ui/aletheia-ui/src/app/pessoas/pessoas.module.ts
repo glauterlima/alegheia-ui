@@ -47,9 +47,6 @@ import { RouterModule } from '@angular/router';
     PessoasPesquisaComponent,
     PessoasGridComponent
   ],
-  exports: [
-    PessoasCadastroComponent,
-    PessoasPesquisaComponent
-  ]
+  exports: []
 })
 export class PessoasModule { }

@@ -39,9 +39,6 @@ import { RouterModule } from '@angular/router';
     DemandasCadastroComponent,
     DemandasPesquisaComponent
   ],
-  exports: [
-    DemandasCadastroComponent,
-    DemandasPesquisaComponent
-  ]
+  exports: []
 })
 export class DemandasModule { }
