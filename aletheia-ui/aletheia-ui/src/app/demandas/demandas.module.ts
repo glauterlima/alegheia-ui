@@ -1,4 +1,3 @@
-import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -15,14 +14,14 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
 
 import { DemandasPesquisaComponent } from './demandas-pesquisa/demandas-pesquisa.component';
 import { DemandasCadastroComponent } from './demandas-cadastro/demandas-cadastro.component';
-import { RouterModule } from '@angular/router';
+import { DemandasRoutingModule } from './demandas-routing.module';
+import { SharedModule } from './../shared/shared.module';
 
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule,
 
     InputTextModule,
     ButtonModule,
@@ -33,7 +32,8 @@ import { RouterModule } from '@angular/router';
     SelectButtonModule,
     DropdownModule,
     CurrencyMaskModule,
-    SharedModule
+    SharedModule,
+    DemandasRoutingModule
   ],
   declarations: [
     DemandasCadastroComponent,

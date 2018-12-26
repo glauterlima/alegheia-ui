@@ -8,9 +8,6 @@ import { PaginaNaoEncontradaComponent } from './core/pagina-nao-encontrada.compo
 
 const routes: Routes = [
   { path: '', redirectTo: 'demandas', pathMatch: 'full' },
-  { path: 'demandas', component: DemandasPesquisaComponent },
-  { path: 'demandas/novo', component: DemandasCadastroComponent },
-  { path: 'demandas/:codigo', component: DemandasCadastroComponent },
   { path: 'pessoas', component: PessoasPesquisaComponent },
   { path: 'pessoas/novo', component: PessoasCadastroComponent },
   { path: 'pagina-nao-encontrada', component: PaginaNaoEncontradaComponent },
