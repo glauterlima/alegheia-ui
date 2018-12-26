@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { LoteService } from './../lotes/lote.service';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -36,6 +37,7 @@ import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component'
     LoteService,
     SistemaService,
     ConfirmationService,
+    Title,
     { provide: LOCALE_ID, useValue: 'pt-BR' },
     ErrorHandlerService
   ]

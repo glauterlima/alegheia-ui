@@ -1,16 +1,17 @@
-import { DemandaService } from 'app/demandas/demanda.service';
+import { Title } from '@angular/platform-browser';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-
 import { Component, OnInit } from '@angular/core';
 
 import { ErrorHandlerService } from 'app/core/error-handler.service';
+import { ToastyService } from 'ng2-toasty';
 
 import { Demanda } from './../../core/model';
 import { PessoaService } from './../../pessoas/pessoa.service';
 import { LoteService } from './../../lotes/lote.service';
 import { SistemaService } from './../../sistemas/sistema.service';
-import { ToastyService } from 'ng2-toasty';
+
+import { DemandaService } from 'app/demandas/demanda.service';
 
 
 @Component({
@@ -61,12 +62,15 @@ export class DemandasCadastroComponent implements OnInit {
     private demandaService: DemandaService,
     private toasty: ToastyService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private title: Title
   ) { }
 
   ngOnInit() {
 
     const codigoDemanda = this.route.snapshot.params['codigo'];
+
+    this.title.setTitle('Nova demanda');
 
     if (codigoDemanda) {
       this.carregarDemanda(codigoDemanda);
@@ -85,6 +89,7 @@ export class DemandasCadastroComponent implements OnInit {
     this.demandaService.buscarPorCodigo(codigo)
     .then(demanda => {
       this.demanda = demanda;
+      this.atualizarTituloEdicao();
     })
     .catch(erro => this.errorHandler.handle(erro));
   }
@@ -115,6 +120,7 @@ export class DemandasCadastroComponent implements OnInit {
       this.demanda = demanda;
 
       this.toasty.success('Demanda alterada com sucesso!');
+      this.atualizarTituloEdicao();
     })
     .catch(erro => this.errorHandler.handle(erro));
   }
@@ -152,5 +158,9 @@ export class DemandasCadastroComponent implements OnInit {
     }.bind(this), 1); // gambiarra para não perder o estado da demanda
 
     this.router.navigate(['/demandas/novo']);
+  }
+
+  atualizarTituloEdicao() {
+    this.title.setTitle(`Edição da demanda: ${this.demanda.nome} `);
   }
 }

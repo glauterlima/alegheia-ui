@@ -1,11 +1,13 @@
 
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 import { ToastyService } from 'ng2-toasty';
 import { LazyLoadEvent, ConfirmationService } from 'primeng/components/common/api';
 
 import { PessoaFiltro, PessoaService } from './../pessoa.service';
 import { ErrorHandlerService } from 'app/core/error-handler.service';
+
 
 @Component({
   selector: 'app-pessoas-pesquisa',
@@ -23,8 +25,13 @@ export class PessoasPesquisaComponent {
     private pessoaService: PessoaService,
     private errorHandler: ErrorHandlerService,
     private toasty: ToastyService,
-    private confirmation: ConfirmationService
+    private confirmation: ConfirmationService,
+    private title: Title
     ) { }
+
+  ngOnInit() {
+      this.title.setTitle('Pesquisa de pessoas');
+  }
 
    pesquisar(pagina = 0) {
     this.filtro.pagina = pagina;
@@ -33,6 +40,7 @@ export class PessoasPesquisaComponent {
       .then(resultado => {
         this.totalRegistros = resultado.total;
         this.pessoas = resultado.pessoas;
+
       })
       .catch(erro => this.errorHandler.handle(erro));
   }

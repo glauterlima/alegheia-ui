@@ -1,5 +1,6 @@
 
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { ToastyService } from 'ng2-toasty';
@@ -7,6 +8,7 @@ import { ConfirmationService } from 'primeng/components/common/api';
 
 import { DemandaService, DemandaFiltro } from './../demanda.service';
 import { ErrorHandlerService } from 'app/core/error-handler.service';
+
 
 @Component({
   selector: 'app-demandas-pesquisa',
@@ -25,11 +27,12 @@ export class DemandasPesquisaComponent implements OnInit {
     private demandaService: DemandaService,
     private errorHandler: ErrorHandlerService,
     private toasty: ToastyService,
-    private confirmation: ConfirmationService
+    private confirmation: ConfirmationService,
+    private title: Title
     ) { }
 
   ngOnInit() {
-
+    this.title.setTitle('Pesquisa de demandas');
   }
 
   pesquisar(pagina = 0) {
