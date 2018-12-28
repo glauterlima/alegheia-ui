@@ -1,3 +1,4 @@
+import { SegurancaModule } from './seguranca/seguranca.module';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -21,6 +22,7 @@ import { DemandasModule } from './demandas/demandas.module';
     CoreModule,
     DemandasModule,
     PessoasModule,
+    SegurancaModule,
     AppRoutingModule
   ],
   providers: [],

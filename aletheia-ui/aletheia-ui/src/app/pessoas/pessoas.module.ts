@@ -1,12 +1,10 @@
-import { PessoasGridComponent } from './pessoas-grid/pessoas-grid.component';
-import { PessoasCadastroComponent } from './pessoas-cadastro/pessoas-cadastro.component';
-import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
-import { DemandasModule } from 'app/demandas/demandas.module';
+import { RouterModule } from '@angular/router';
+
 import { InputTextModule } from 'primeng/components/inputtext/inputtext';
 import { ButtonModule } from 'primeng/components/button/button';
 import { DataTableModule } from 'primeng/components/datatable/datatable';
@@ -16,8 +14,13 @@ import { CalendarModule } from 'primeng/components/calendar/calendar';
 import { SelectButtonModule } from 'primeng/components/selectbutton/selectbutton';
 import { DropdownModule } from 'primeng/components/dropdown/dropdown';
 import { InputMaskModule } from 'primeng/components/inputmask/inputmask';
+
+import { PessoasRoutingModule } from './pessoas-routing.module';
+import { PessoasGridComponent } from './pessoas-grid/pessoas-grid.component';
+import { PessoasCadastroComponent } from './pessoas-cadastro/pessoas-cadastro.component';
+import { SharedModule } from './../shared/shared.module';
+import { DemandasModule } from 'app/demandas/demandas.module';
 import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
-import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
@@ -39,7 +42,8 @@ import { RouterModule } from '@angular/router';
     DropdownModule,
     InputMaskModule,
 
-    SharedModule
+    SharedModule,
+    PessoasRoutingModule
 
   ],
   declarations: [
