@@ -89,4 +89,14 @@ export class PessoasCadastroComponent implements OnInit {
     this.title.setTitle(`Edição da Pessoa: ${this.pessoa.nome} `);
   }
 
+  novo(form: FormControl) {
+    form.reset();
+
+    setTimeout(function() {
+      this.pessoa = new Pessoa();
+    }.bind(this), 1); // gambiarra para não perder o estado da demanda
+
+    this.router.navigate(['/pessoas/novo']);
+  }
+
 }

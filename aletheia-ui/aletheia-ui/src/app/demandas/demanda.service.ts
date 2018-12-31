@@ -1,8 +1,9 @@
-import { Http, Headers, URLSearchParams } from '@angular/http';
+import { Headers, URLSearchParams } from '@angular/http';
 import { Injectable, Component } from '@angular/core';
 
 import 'rxjs/add/operator/toPromise';
 import * as moment from 'moment';
+import { AuthHttp } from 'angular2-jwt';
 
 import { Demanda } from 'app/core/model';
 
@@ -20,14 +21,11 @@ export class DemandaService {
 
   demandasUrl = 'http://localhost:8080/demandas';
 
-  constructor(private http: Http) { }
+  constructor(private http: AuthHttp) { }
 
   pesquisar(filtro: DemandaFiltro): Promise<any> {
 
     const params = new URLSearchParams();
-    const headers = new Headers();
-    // tslint:disable-next-line:max-line-length
-    headers.append('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbkBhbGdhbW9uZXkuY29tIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sIm5vbWUiOiJBZG1pbmlzdHJhZG9yIiwiZXhwIjoxNTQ2MDMwMzA5LCJhdXRob3JpdGllcyI6WyJST0xFX0NBREFTVFJBUl9ERU1BTkRBIiwiUk9MRV9SRU1PVkVSX1NJU1RFTUEiLCJST0xFX1BFU1FVSVNBUl9QRVNTT0EiLCJST0xFX0NBREFTVFJBUl9TSVNURU1BIiwiUk9MRV9SRU1PVkVSX1BFU1NPQSIsIlJPTEVfUEVTUVVJU0FSX0RFTUFOREEiLCJST0xFX1JFTU9WRVJfREVNQU5EQSIsIlJPTEVfUkVNT1ZFUl9MT1RFIiwiUk9MRV9DQURBU1RSQVJfUEVTU09BIiwiUk9MRV9QRVNRVUlTQVJfU0lTVEVNQSIsIlJPTEVfQ0FEQVNUUkFSX0xPVEUiLCJST0xFX1BFU1FVSVNBUl9MT1RFIl0sImp0aSI6IjZmYmIwN2I0LWJjYTctNDM2OS1hMWIyLWY0MzllZjViYzZhYiIsImNsaWVudF9pZCI6ImFuZ3VsYXIifQ.nqhGRSyutY5zMKRtfx0GF2FLoTg-gmirQp1HglvMjks');
 
     params.set('page', filtro.pagina.toString());
     params.set('size', filtro.itensPorPagina.toString());
@@ -36,7 +34,7 @@ export class DemandaService {
       params.set('nome', filtro.nome);
     }
 
-    return this.http.get(`${this.demandasUrl}?resumo`, { headers, search: params })
+    return this.http.get(`${this.demandasUrl}?resumo`, { search: params })
     .toPromise()
     .then(response => {
       const responseJson = response.json();
@@ -52,36 +50,22 @@ export class DemandaService {
   }
 
   excluir(codigo: number): Promise<void> {
-    const headers = new Headers();
-    // tslint:disable-next-line:max-line-length
-    headers.append('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbkBhbGdhbW9uZXkuY29tIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sIm5vbWUiOiJBZG1pbmlzdHJhZG9yIiwiZXhwIjoxNTQ2MDMwMzA5LCJhdXRob3JpdGllcyI6WyJST0xFX0NBREFTVFJBUl9ERU1BTkRBIiwiUk9MRV9SRU1PVkVSX1NJU1RFTUEiLCJST0xFX1BFU1FVSVNBUl9QRVNTT0EiLCJST0xFX0NBREFTVFJBUl9TSVNURU1BIiwiUk9MRV9SRU1PVkVSX1BFU1NPQSIsIlJPTEVfUEVTUVVJU0FSX0RFTUFOREEiLCJST0xFX1JFTU9WRVJfREVNQU5EQSIsIlJPTEVfUkVNT1ZFUl9MT1RFIiwiUk9MRV9DQURBU1RSQVJfUEVTU09BIiwiUk9MRV9QRVNRVUlTQVJfU0lTVEVNQSIsIlJPTEVfQ0FEQVNUUkFSX0xPVEUiLCJST0xFX1BFU1FVSVNBUl9MT1RFIl0sImp0aSI6IjZmYmIwN2I0LWJjYTctNDM2OS1hMWIyLWY0MzllZjViYzZhYiIsImNsaWVudF9pZCI6ImFuZ3VsYXIifQ.nqhGRSyutY5zMKRtfx0GF2FLoTg-gmirQp1HglvMjks');
-
-    return this.http.delete(`${this.demandasUrl}/${codigo}`, { headers })
+    return this.http.delete(`${this.demandasUrl}/${codigo}`)
     .toPromise()
     .then(() => null);
   }
 
   adicionar(demanda: Demanda): Promise<Demanda> {
-    const headers = new Headers();
-    // tslint:disable-next-line:max-line-length
-    headers.append('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbkBhbGdhbW9uZXkuY29tIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sIm5vbWUiOiJBZG1pbmlzdHJhZG9yIiwiZXhwIjoxNTQ2MDMwMzA5LCJhdXRob3JpdGllcyI6WyJST0xFX0NBREFTVFJBUl9ERU1BTkRBIiwiUk9MRV9SRU1PVkVSX1NJU1RFTUEiLCJST0xFX1BFU1FVSVNBUl9QRVNTT0EiLCJST0xFX0NBREFTVFJBUl9TSVNURU1BIiwiUk9MRV9SRU1PVkVSX1BFU1NPQSIsIlJPTEVfUEVTUVVJU0FSX0RFTUFOREEiLCJST0xFX1JFTU9WRVJfREVNQU5EQSIsIlJPTEVfUkVNT1ZFUl9MT1RFIiwiUk9MRV9DQURBU1RSQVJfUEVTU09BIiwiUk9MRV9QRVNRVUlTQVJfU0lTVEVNQSIsIlJPTEVfQ0FEQVNUUkFSX0xPVEUiLCJST0xFX1BFU1FVSVNBUl9MT1RFIl0sImp0aSI6IjZmYmIwN2I0LWJjYTctNDM2OS1hMWIyLWY0MzllZjViYzZhYiIsImNsaWVudF9pZCI6ImFuZ3VsYXIifQ.nqhGRSyutY5zMKRtfx0GF2FLoTg-gmirQp1HglvMjks');
-    headers.append('Content-Type', 'application/json');
-
     return this.http.post(this.demandasUrl,
-      JSON.stringify(demanda), { headers })
+      JSON.stringify(demanda))
       .toPromise()
       .then(response => response.json());
 
   }
 
   atualizar(demanda: Demanda): Promise<Demanda> {
-    const headers = new Headers();
-    // tslint:disable-next-line:max-line-length
-    headers.append('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbkBhbGdhbW9uZXkuY29tIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sIm5vbWUiOiJBZG1pbmlzdHJhZG9yIiwiZXhwIjoxNTQ2MDMwMzA5LCJhdXRob3JpdGllcyI6WyJST0xFX0NBREFTVFJBUl9ERU1BTkRBIiwiUk9MRV9SRU1PVkVSX1NJU1RFTUEiLCJST0xFX1BFU1FVSVNBUl9QRVNTT0EiLCJST0xFX0NBREFTVFJBUl9TSVNURU1BIiwiUk9MRV9SRU1PVkVSX1BFU1NPQSIsIlJPTEVfUEVTUVVJU0FSX0RFTUFOREEiLCJST0xFX1JFTU9WRVJfREVNQU5EQSIsIlJPTEVfUkVNT1ZFUl9MT1RFIiwiUk9MRV9DQURBU1RSQVJfUEVTU09BIiwiUk9MRV9QRVNRVUlTQVJfU0lTVEVNQSIsIlJPTEVfQ0FEQVNUUkFSX0xPVEUiLCJST0xFX1BFU1FVSVNBUl9MT1RFIl0sImp0aSI6IjZmYmIwN2I0LWJjYTctNDM2OS1hMWIyLWY0MzllZjViYzZhYiIsImNsaWVudF9pZCI6ImFuZ3VsYXIifQ.nqhGRSyutY5zMKRtfx0GF2FLoTg-gmirQp1HglvMjks');
-    headers.append('Content-Type', 'application/json');
-
     return this.http.put(`${this.demandasUrl}/${demanda.codigo}`,
-    JSON.stringify(demanda), { headers })
+    JSON.stringify(demanda))
     .toPromise()
     .then(response => {
       const demandaAlterada = response.json() as Demanda;
@@ -93,11 +77,7 @@ export class DemandaService {
   }
 
   buscarPorCodigo(codigo: number): Promise<Demanda> {
-    const headers = new Headers();
-    // tslint:disable-next-line:max-line-length
-    headers.append('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbkBhbGdhbW9uZXkuY29tIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sIm5vbWUiOiJBZG1pbmlzdHJhZG9yIiwiZXhwIjoxNTQ2MDMwMzA5LCJhdXRob3JpdGllcyI6WyJST0xFX0NBREFTVFJBUl9ERU1BTkRBIiwiUk9MRV9SRU1PVkVSX1NJU1RFTUEiLCJST0xFX1BFU1FVSVNBUl9QRVNTT0EiLCJST0xFX0NBREFTVFJBUl9TSVNURU1BIiwiUk9MRV9SRU1PVkVSX1BFU1NPQSIsIlJPTEVfUEVTUVVJU0FSX0RFTUFOREEiLCJST0xFX1JFTU9WRVJfREVNQU5EQSIsIlJPTEVfUkVNT1ZFUl9MT1RFIiwiUk9MRV9DQURBU1RSQVJfUEVTU09BIiwiUk9MRV9QRVNRVUlTQVJfU0lTVEVNQSIsIlJPTEVfQ0FEQVNUUkFSX0xPVEUiLCJST0xFX1BFU1FVSVNBUl9MT1RFIl0sImp0aSI6IjZmYmIwN2I0LWJjYTctNDM2OS1hMWIyLWY0MzllZjViYzZhYiIsImNsaWVudF9pZCI6ImFuZ3VsYXIifQ.nqhGRSyutY5zMKRtfx0GF2FLoTg-gmirQp1HglvMjks');
-
-    return this.http.get(`${this.demandasUrl}/${codigo}`, { headers })
+    return this.http.get(`${this.demandasUrl}/${codigo}`)
       .toPromise()
       .then(response => {
         const demanda = response.json() as Demanda;
