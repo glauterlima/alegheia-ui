@@ -14,6 +14,7 @@ import { PessoaService } from 'app/pessoas/pessoa.service';
 import { SistemaService } from 'app/sistemas/sistema.service';
 import { RouterModule } from '@angular/router';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component';
+import { AuthService } from './../seguranca/auth.service';
 
 
 
@@ -39,6 +40,7 @@ import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component'
     ConfirmationService,
     Title,
     { provide: LOCALE_ID, useValue: 'pt-BR' },
+    AuthService,
     ErrorHandlerService
   ]
 
