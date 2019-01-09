@@ -1,3 +1,4 @@
+import { NaoAutorizadoComponent } from './nao-autorizado.component';
 import { Title } from '@angular/platform-browser';
 import { LoteService } from './../lotes/lote.service';
 import { NgModule, LOCALE_ID } from '@angular/core';
@@ -27,7 +28,11 @@ import { AuthService } from './../seguranca/auth.service';
     ToastyModule.forRoot(),
     ConfirmDialogModule
   ],
-  declarations: [NavbarComponent, PaginaNaoEncontradaComponent],
+  declarations: [
+    NavbarComponent,
+    PaginaNaoEncontradaComponent,
+    NaoAutorizadoComponent,
+  ],
   exports: [
     NavbarComponent,
     ToastyModule,

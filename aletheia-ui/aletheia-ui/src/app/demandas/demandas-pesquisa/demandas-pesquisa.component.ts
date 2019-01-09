@@ -1,4 +1,3 @@
-
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
@@ -8,6 +7,7 @@ import { ConfirmationService } from 'primeng/components/common/api';
 
 import { DemandaService, DemandaFiltro } from './../demanda.service';
 import { ErrorHandlerService } from 'app/core/error-handler.service';
+import { AuthService } from './../../seguranca/auth.service';
 
 
 @Component({
@@ -25,6 +25,7 @@ export class DemandasPesquisaComponent implements OnInit {
 
   constructor(
     private demandaService: DemandaService,
+    private auth: AuthService,
     private errorHandler: ErrorHandlerService,
     private toasty: ToastyService,
     private confirmation: ConfirmationService,

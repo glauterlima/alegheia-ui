@@ -55,7 +55,8 @@
                 [routerLink]="['/demandas', dema.codigo]" tooltipPosition="top"></a>
                 <button pButton icon="fa fa-trash" pTooltip="Excluir"
                   tooltipPosition="top"
-                  (click)="confirmarExclusao(dema)"></button>
+                  (click)="confirmarExclusao(dema)"
+                  [disabled]="!auth.temPermissao('ROLE_REMOVER_DEMANDA')"></button>
 
             </ng-template>
           </p-column>
