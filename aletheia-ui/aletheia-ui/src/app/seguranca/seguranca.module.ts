@@ -1,3 +1,4 @@
+import { AletheiaHttp } from './aletheia-http';
 import { Http, RequestOptions } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
@@ -9,15 +10,16 @@ import { AuthHttp, AuthConfig } from 'angular2-jwt';
 
 import { SegurancaRoutingModule } from './seguranca-routing.module';
 import { LoginFormComponent } from './login-form/login-form.component';
+import { AuthService } from './auth.service';
 
-export function authHttpServiceFactory(http: Http, options: RequestOptions) {
+export function authHttpServiceFactory(auth: AuthService, http: Http, options: RequestOptions) {
   const config = new AuthConfig({
     globalHeaders: [
       { 'Content-Type': 'application/json' } // aplica o Content Type em todas as requisições do sistema
     ]
   });
 
-  return new AuthHttp(config, http, options);
+  return new AletheiaHttp(auth, config, http, options);
 }
 
 @NgModule({
@@ -35,7 +37,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     {
       provide: AuthHttp,
       useFactory: authHttpServiceFactory,
-      deps: [Http, RequestOptions]
+      deps: [AuthService, Http, RequestOptions]
     }
   ]
 })
