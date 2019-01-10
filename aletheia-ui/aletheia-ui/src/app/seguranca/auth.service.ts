@@ -62,6 +62,12 @@ export class AuthService {
     });
   }
 
+  // Metodo para eliminar o access token da aplicacao
+  limparAccessToken() {
+    localStorage.removeItem('token');
+    this.jwtPayload = null;
+  }
+
   isAccessTokenInvalido() {
     const token = localStorage.getItem('token');
 
