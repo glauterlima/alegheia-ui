@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Http, RequestOptions, RequestOptionsArgs, Response } from '@angular/http';
+import { AuthConfig, AuthHttp } from 'angular2-jwt';
 
-import { AuthConfig, AuthHttp, JwtHelper } from 'angular2-jwt';
 import { Observable } from 'rxjs/Observable';
 
 import { AuthService } from './auth.service';
+
+export class NotAuthenticatedError {}
 
 @Injectable()
 export class AletheiaHttp extends AuthHttp {
@@ -51,6 +53,9 @@ export class AletheiaHttp extends AuthHttp {
 
       const chamadaNovoAccessToken = this.auth.obterNovoAccessToken()
         .then(() => {
+          if (this.auth.isAccessTokenInvalido()) {
+            throw new NotAuthenticatedError();
+          }
           return fn().toPromise();
         });
 
