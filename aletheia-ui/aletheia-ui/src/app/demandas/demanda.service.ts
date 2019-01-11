@@ -6,6 +6,7 @@ import * as moment from 'moment';
 import { AuthHttp } from 'angular2-jwt';
 
 import { Demanda } from 'app/core/model';
+import { environment } from 'environments/environment';
 
 
 
@@ -19,9 +20,11 @@ export class DemandaFiltro {
 @Injectable()
 export class DemandaService {
 
-  demandasUrl = 'http://localhost:8080/demandas';
+  demandasUrl: string;
 
-  constructor(private http: AuthHttp) { }
+  constructor(private http: AuthHttp) {
+    this.demandasUrl = `${environment.apiUrl}/demandas`;
+   }
 
   pesquisar(filtro: DemandaFiltro): Promise<any> {
 

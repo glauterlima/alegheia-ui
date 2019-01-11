@@ -7,7 +7,7 @@
       </div>
 
       <div class="ui-g-12">
-        <p-selectButton name="status" [options]="status"></p-selectButton>
+          <p-selectButton name="status" [options]="status" [(ngModel)]="demanda.status" #statu="ngModel"></p-selectButton>
       </div>
 
       <div class="ui-g-6 ui-md-3 ui-fluid">
@@ -22,12 +22,14 @@
 
       <div class="ui-g-6 ui-md-3 ui-fluid">
           <label>Sistema</label>
-          <p-dropdown name="sistema" [options]="sistemas" placeholder="Selecione" [autoWidth]="false" [filter]="true" ngModel required [(ngModel)]="demanda.sistema.codigo"></p-dropdown>
+          <p-dropdown name="sistema" [options]="sistemas" placeholder="Selecione" [autoWidth]="false"
+          [filter]="true" ngModel required [(ngModel)]="demanda.sistema.codigo"></p-dropdown>
       </div>
 
       <div class="ui-g-12 ui-fluid">
           <label>Responsável pela aferição</label>
-          <p-dropdown name="pessoa" [options]="pessoas" placeholder="Selecione" [autoWidth]="false" [filter]="true" ngModel required [(ngModel)]="demanda.pessoa.codigo"></p-dropdown>
+          <p-dropdown name="pessoa" [options]="pessoas" placeholder="Selecione" [autoWidth]="false"
+          [filter]="true" ngModel required [(ngModel)]="demanda.pessoa.codigo"></p-dropdown>
       </div>
 
       <div class="ui-g-4   ui-fluid">

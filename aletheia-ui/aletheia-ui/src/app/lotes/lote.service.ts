@@ -3,13 +3,17 @@ import { Injectable } from '@angular/core';
 
 import 'rxjs/add/operator/toPromise';
 import { AuthHttp } from 'angular2-jwt';
+import { environment } from 'environments/environment';
 
 @Injectable()
 export class LoteService {
 
-  lotesUrl = 'http://localhost:8080/lotes';
+  lotesUrl: string;
 
-  constructor(private http: AuthHttp) { }
+  constructor(private http: AuthHttp) {
+    this.lotesUrl = `${environment.apiUrl}/lotes`;
+   }
+
 
   listarTodos(): Promise<any> {
 

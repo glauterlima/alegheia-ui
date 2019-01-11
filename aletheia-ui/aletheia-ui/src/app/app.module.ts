@@ -5,6 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { SelectButtonModule } from 'primeng/components/selectbutton/selectbutton';
+
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { PessoasModule } from './pessoas/pessoas.module';
@@ -18,7 +20,7 @@ import { DemandasModule } from './demandas/demandas.module';
     BrowserModule,
     BrowserAnimationsModule,
     HttpModule,
-
+    SelectButtonModule,
     CoreModule,
     DemandasModule,
     PessoasModule,

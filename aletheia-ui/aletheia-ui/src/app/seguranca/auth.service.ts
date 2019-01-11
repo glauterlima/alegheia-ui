@@ -3,11 +3,12 @@ import { Http, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
 
 import 'rxjs/add/operator/toPromise';
+import { environment } from 'environments/environment';
 
 @Injectable()
 export class AuthService {
 
-  oauthTokenUrl = 'http://localhost:8080/oauth/token';
+  oauthTokenUrl = `${environment.apiUrl}/oauth/token`;
   jwtPayload: any;
 
   constructor(

@@ -21,8 +21,6 @@ import { DemandaService } from 'app/demandas/demanda.service';
 })
 export class DemandasCadastroComponent implements OnInit {
 
-  status = [];
-
   plataformas = [
     {label: 'Asp', value: 'ASP' },
     {label: 'Html', value: 'HTML' },
@@ -39,6 +37,12 @@ export class DemandasCadastroComponent implements OnInit {
     {label: 'VbScript', value: 'VBSCRIPT' },
     {label: 'Visual Basic', value: 'VISUALBASIC' },
   ];
+
+  status = [
+    {label: 'Pendente', value: 'PENDENTE' },
+    {label: 'Em Análise', value: 'EMANALISE' },
+    {label: 'Finalizada', value: 'FINALIZADA' },
+ ];
 
   pessoas = [];
 
