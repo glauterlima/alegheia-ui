@@ -3,4 +3,17 @@
 <fullyQualifiedTypeName name="org.hibernate.validator.constraints.NotBlank"/>
 <fullyQualifiedTypeName name="org.springframework.web.servlet.mvc.support.RedirectAttributes"/>
 <fullyQualifiedTypeName name="org.springframework.web.filter.CharacterEncodingFilter"/>
+<fullyQualifiedTypeName name="javax.persistence.GeneratedValue"/>
+<fullyQualifiedTypeName name="javax.persistence.Column"/>
+<fullyQualifiedTypeName name="javax.persistence.EnumType"/>
+<fullyQualifiedTypeName name="javax.persistence.GenerationType"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="javax.persistence.Id"/>
+<fullyQualifiedTypeName name="java.io.Serializable"/>
+<fullyQualifiedTypeName name="br.jus.trf1.aletheia.model.Demanda"/>
+<fullyQualifiedTypeName name="br.jus.trf1.aletheia.repository.Demandas"/>
+<fullyQualifiedTypeName name="br.jus.trf1.aletheia.config.JPAConfig"/>
+<fullyQualifiedTypeName name="br.jus.trf1.aletheia.controller.DemandasController"/>
+<fullyQualifiedTypeName name="javax.persistence.Entity"/>
+<fullyQualifiedTypeName name="javax.persistence.Table"/>
 </qualifiedTypeNameHistroy>
